@@ -190,3 +190,15 @@ Not every task needs every skill. A bug fix might only need: `debugging-and-erro
 | Ship | documentation-and-adrs | Document the why, not just the what |
 | Ship | observability-and-instrumentation | Structured logs, RED metrics, traces, symptom-based alerts |
 | Ship | shipping-and-launch | Pre-launch checklist, monitoring, rollback plan |
+
+## Verification
+
+The meta-skill verifies *selection*, not an artifact — the skill you pick owns that check.
+Before moving on, confirm:
+
+- [ ] A skill was identified for the current phase, or the decision to use none was stated and the change is a single self-contained edit
+- [ ] The chosen skill's own `## Verification` checklist was read before starting, not after finishing
+- [ ] Where two skills could apply, the one named in the Skill Discovery tree was preferred over an ad-hoc process
+- [ ] The skill's artifacts are being written where the next skill expects to read them
+- [ ] The turn stopped at the skill's human-approval gate rather than advancing into the next phase
+- [ ] The Definition of Done still applies to this change regardless of which skill is active (see `references/definition-of-done.md`)

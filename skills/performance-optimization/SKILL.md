@@ -146,6 +146,15 @@ A fix is a hypothesis until you re-measure. This step decides whether it survive
 
 **Beat the noise, not just the mean.** Repeat the measurement and compare the delta against run-to-run variance. A 3% gain inside ±5% variance is not a gain; it is a different sample.
 
+**Measure input the real system sees.** Noise is not the only way a benchmark lies — a
+non-representative *sample* invalidates a delta just as thoroughly, and it is easier to miss
+because the numbers look clean. Repeating five strings 200,000 times makes a cache look like
+a 96% win: the hit rate is ~100% and the cache never grows, neither of which survives real
+traffic. Before trusting a delta, ask what the production input distribution looks like and
+whether the sample resembles it. A benchmark that flatters the optimisation is worse than no
+benchmark — it buys complexity that pays nothing and a ledger entry that misleads the next
+person.
+
 Then decide, strictly:
 
 | Result vs. baseline | Action |
@@ -247,6 +256,7 @@ For detailed performance checklists, optimization commands, and anti-pattern ref
 - Several optimizations bundled into one measurement, so no single change can be attributed
 - A "win" that required a test to be changed, skipped, or deleted
 - The same failed optimization attempted more than once because nobody recorded the first attempt
+- A benchmark whose input sample repeats a handful of values, or is otherwise unlike production traffic
 
 ## Verification
 
